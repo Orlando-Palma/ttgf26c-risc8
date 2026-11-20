@@ -1,17 +1,17 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title:        "TT-RISC8: 8-bit RISC Micro-CPU with ROM and 7-Seg Debug"
+  author:       "Orlando Arturo Palma Leon"
+  discord:      ""
+  description:  "Single-cycle 8-bit RISC CPU with 16-instruction ISA, 4 built-in ROM programs (Fibonacci, Collatz, PRNG, Counter), external bus mode, and 7-segment hardware debug unit"
+  language:     "Verilog"
+  clock_hz:     50000000
 
   # How many tiles your design occupies? A single tile is about 340x160 uM.
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 3x4 or 4x4
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_orlando_palma_risc8"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
@@ -23,34 +23,34 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[0]: "PROG_SEL0 (ROM program select bit 0)"
+  ui[1]: "PROG_SEL1 (ROM program select bit 1)"
+  ui[2]: "STEP_EN (0 = continuous run, 1 = single-step pause)"
+  ui[3]: "STEP_TRIG (0->1 rising edge steps 1 instruction)"
+  ui[4]: "DBG_SEL0 (7-seg debug view select bit 0)"
+  ui[5]: "DBG_SEL1 (7-seg debug view select bit 1)"
+  ui[6]: "USER_IN (1-bit user data input for IN instruction)"
+  ui[7]: "EXT_MODE (0 = internal ROM, 1 = external instruction on uio_in)"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "SEG_A (7-segment display segment A)"
+  uo[1]: "SEG_B (7-segment display segment B)"
+  uo[2]: "SEG_C (7-segment display segment C)"
+  uo[3]: "SEG_D (7-segment display segment D)"
+  uo[4]: "SEG_E (7-segment display segment E)"
+  uo[5]: "SEG_F (7-segment display segment F)"
+  uo[6]: "SEG_G (7-segment display segment G)"
+  uo[7]: "DP_CARRY (7-segment decimal point: ALU Carry flag C)"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "BUS_D0 (OUT[0] output in ROM mode / INSTR[0] input in EXT_MODE)"
+  uio[1]: "BUS_D1 (OUT[1] output in ROM mode / INSTR[1] input in EXT_MODE)"
+  uio[2]: "BUS_D2 (OUT[2] output in ROM mode / INSTR[2] input in EXT_MODE)"
+  uio[3]: "BUS_D3 (OUT[3] output in ROM mode / INSTR[3] input in EXT_MODE)"
+  uio[4]: "BUS_D4 (OUT[4] output in ROM mode / INSTR[4] input in EXT_MODE)"
+  uio[5]: "BUS_D5 (OUT[5] output in ROM mode / INSTR[5] input in EXT_MODE)"
+  uio[6]: "BUS_D6 (OUT[6] output in ROM mode / INSTR[6] input in EXT_MODE)"
+  uio[7]: "BUS_D7 (OUT[7] output in ROM mode / INSTR[7] input in EXT_MODE)"
 
 # Do not change!
 yaml_version: 6
